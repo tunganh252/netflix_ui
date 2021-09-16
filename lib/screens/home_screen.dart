@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_responsive_ui/data/data.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       floatingActionButton: FloatingActionButton(
         onPressed: () => print("share device"),
         backgroundColor: Colors.grey[850],
@@ -44,9 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: _scrollController,
         slivers: [
           SliverToBoxAdapter(
-            child: Container(
-              height: 2000.0,
-              color: Colors.blue,
+            child: ContentHeader(featuredContent: sintelContent),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.only(top: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: Previews(title: "Previews", contentList: previews),
             ),
           )
         ],
