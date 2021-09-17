@@ -35,6 +35,7 @@ class Previews extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => print("preview"),
                   child: Stack(
+                    alignment: Alignment.center,
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 16.0),
@@ -44,6 +45,27 @@ class Previews extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(content.imageUrl)),
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 4.0, color: content.color),
+                        ),
+                      ),
+                      Container(
+                        height: 130,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.black87,
+                                Colors.black45,
+                                Colors.transparent
+                              ],
+                              stops: [
+                                0,
+                                0.25,
+                                1
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter),
                           shape: BoxShape.circle,
                           border: Border.all(width: 4.0, color: content.color),
                         ),
